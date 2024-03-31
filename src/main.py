@@ -26,3 +26,5 @@ def main():
 # запустить только при исходном файле
 if __name__=="__main__":
     main()
+    
+    print(getAallData())

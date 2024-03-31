@@ -123,7 +123,63 @@ def addDataFloors(data: list, description: str):
 
     return "Success"
 
+def getAallData():
+    db = sql.connect(FILE)
+    cursor = db.cursor()
+    
+    res = dict()
+
+    cursor.execute(f"""
+        SELECT * FROM date
+    """)
+    
+    fetch = cursor.fetchall()
+    
+    for elem in fetch:
+        if elem[0] in res.keys():
+            res[elem[0]].append(elem[1:])
+        else:
+            res[elem[0]] = [elem[1:]]
+    
+    cursor.execute(f"""
+        SELECT * FROM floors
+    """)
+    
+    fetch = cursor.fetchall()
+    for elem in fetch:
+        if elem[0] in res.keys():
+            res[elem[0]].append(elem[1:])
+        else:
+            res[elem[0]] = [elem[1:]]
+            
+    cursor.execute(f"""
+        SELECT * FROM rooms_count
+    """)
+    
+    fetch = cursor.fetchall()
+    for elem in fetch:
+        if elem[0] in res.keys():
+            res[elem[0]].append(elem[1:])
+        else:
+            res[elem[0]] = [elem[1:]]
+    
+    
+    cursor.execute(f"""
+        SELECT * FROM windows_for_room
+    """)
+    
+    fetch = cursor.fetchall()
+    for elem in fetch:
+        if elem[0] in res.keys():
+            res[elem[0]].append(elem[1:])
+        else:
+            res[elem[0]] = [elem[1:]]
+    
+    return res
+
 
 # запуск тестирующей части (при неоходимости)
 if __name__ == "__main__":
     createDatabase()
+    # тестим получение данных
+    getAallData()
