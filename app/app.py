@@ -11,8 +11,12 @@ app = Flask(__name__)
 createDatabase()
 
 @app.route('/')
-@app.route('/index')
+@app.route('/index', methods=['GET', 'POST'])
 def index():
+    if request.method == 'POST':
+        datas = getAallData()
+        render_template('index.html', answer="Данные получены корректно", numbers=datas[3], count_room=datas[1], newdata=datas)
+    
     return render_template('index.html')
 
 @app.route('/vvod', methods=['GET', 'POST'])
