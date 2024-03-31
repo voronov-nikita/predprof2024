@@ -211,3 +211,23 @@ h1, h2, h3, h4, h5, h6 {
     flex-grow: 1;
   }
 }
+
+.box {
+  width: 400px;
+  height: 600px;
+  background: black;
+  margin-bottom: 10px;
+}
+.btnss {
+    display: inline-block;
+    flexDirection: row,
+    justifyContent: space-between,
+    padding: 8px 30px;
+
+    font-size: 18px;
+    font-weight: 700;
+    color: #020;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background .1s linear, color .1s linear;
+}
