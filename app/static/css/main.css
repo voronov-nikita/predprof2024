@@ -220,8 +220,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 .btnss {
     display: inline-block;
-    flexDirection: row,
-    justifyContent: space-between,
+    flexDirection: row;
+    justifyContent: space-between;
     padding: 8px 30px;
 
     font-size: 18px;
