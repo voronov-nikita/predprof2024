@@ -14,8 +14,11 @@ createDatabase()
 @app.route('/index', methods=['GET', 'POST'])
 def index():
     if request.method == 'POST':
-        datas = getAallData()
-        render_template('index.html', answer="Данные получены корректно", numbers=datas[3], count_room=datas[1], newdata=datas)
+        print(getAallData())
+        date = request.form['date']
+        datas = getAallData()[int(date)]
+        print(datas)
+        render_template('index.html', answer="Данные получены корректно", numbers=datas[3], count_room=str(datas[1]), newdata=[i[0] for i in datas])
     
     return render_template('index.html')
 
