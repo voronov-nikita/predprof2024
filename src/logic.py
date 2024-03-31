@@ -12,6 +12,8 @@ URL = "https://olimp.miet.ru/ppo_it_final"
 HEADER = {"X-Auth-Token": 'ppo_11_11573'}
 
 
+session = requests.Session()
+
 def getData(url: str = "/date") -> dict:
     '''
     Функция парсинга данных. 
@@ -19,14 +21,13 @@ def getData(url: str = "/date") -> dict:
     Функция принимает в себя url страницы для парсинга и возвращает словарь данных.
 
     '''
-    p = requests.get(URL+url, headers=HEADER)
+    p = session.get(URL+url, headers=HEADER)
     return json.loads(p.text)
 
 
 def getAllData():
     res = []
     ls = getData()["message"]
-    print(ls)
     for elem in ls:
         data = elem.split("-")
 
@@ -34,9 +35,9 @@ def getAllData():
         month = data[1]
         year = data[2]
 
-        p = requests.get(
+        p = session.get(
             URL+f"?day={day}&month={month}&year={year}", headers=HEADER)
-        res.append(p.text)
+        res.append(json.loads(p.text)["message"])
     return res
 
 
@@ -53,7 +54,7 @@ def postData():
     },
         "date": "01-05-21"}
     HEADER = {"X-Auth-Token": 'ppo_11_11573'}
-    p = requests.post(URL, params=data, headers=HEADER)
+    p = session.post(URL, params=data, headers=HEADER)
     print(p.text)
 
 

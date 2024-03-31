@@ -71,7 +71,7 @@ def addDataDate(data, description):
     cursor = db.cursor()
 
     cursor.execute(f"""
-        INSERT INTO rooms_count(data, description) VALUES('{data}', '{description}')
+        INSERT INTO date(data, description) VALUES('{data}', '{description}')
     """)
 
     db.commit()
@@ -98,7 +98,7 @@ def addDataWindows(data: list, description: str):
     db = sql.connect(FILE)
     cursor = db.cursor()
 
-    data = '_'.join(data)
+    data = '_'.join([str(i) for i in data])
     cursor.execute(f"""
         INSERT INTO windows_for_room(data, description) VALUES('{data}', '{description}')
     """)
@@ -109,13 +109,13 @@ def addDataWindows(data: list, description: str):
     return "Success"
 
 
-def addDataWindows(data: list, description: str):
+def addDataFloors(data: list, description: str):
     db = sql.connect(FILE)
     cursor = db.cursor()
 
-    data = '_'.join(data)
+    data = '_'.join([str(i) for i in data])
     cursor.execute(f"""
-        INSERT INTO floors(data, description) VALUES('{data}', '{description}')
+        INSERT INTO floors(name, description) VALUES('{data}', '{description}')
     """)
 
     db.commit()
