@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv='X-UA-Compatible' content='ie=edge'>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+</head>
+<body>
+<div class="header">
+    <div class="container">
+        <div class="header__inner">
+            <div class="header__logo">ИТ</div>
+
+            <nav class="nav headerButton">
+                <a class="nav__link" href="#index">ПО ДНЯМ</a>
+                <a class="nav__link" href="#vvod">ВВОД ДАННЫХ</a>
+                <a class="nav__link" href="#list">ОТОБРАЖЕНИЕ ПО МЕСЯЦАМ</a>
+            </nav>
+        </div>
+    </div>
+</div>
+
+<div id="index" class="intro">
+    <div class="container">
+        <div class="intro__inner">
+            <form action="/vvod" method="post">
+            <h1 class="intro__title">Введите данные</h1>
+            <h3 class="for__what">Дата:
+            <input type="text" id="data" name="name" required minlength="1" maxlength="100000" size="60" />
+            </h3>
+            <h3 class="for__what">Количество номеров на этаже:
+                <input type="text" id="c_floors" name="name" required minlength="1" maxlength="100000" size="60" />
+            </h3>
+            <h3 class="for__what">Количество окон в комнате:
+            <input type="text" id="c_wind" name="name" required minlength="1" maxlength="100000" size="60" />
+            </h3>
+            <h3 class="for__what">Комнаты, где горят лампочки:
+            <input type="text" id="roomsbright" name="name" required minlength="1" maxlength="100000" size="60" />
+            </h3>
+                <input class="btn" type="submit" value="сохранить">
+<!--                <a class="btn">сохранить</a>-->
+<!--                <a class="btn" href="css/greenhouse.apk" download="">сохранить</a>-->
+            </form>
+        </div>
+    </div>
+
+    <div class="line">
+</div>
+</div>
+
+</body>
+</html>
