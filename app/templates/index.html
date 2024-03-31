@@ -11,6 +11,7 @@
       rel="stylesheet"
       href="{{ url_for('static', filename='css/main.css') }}"
     />
+    
   </head>
   <body>
     <div class="header">
@@ -29,63 +30,35 @@
 </div>
 <div class="block">
   <div class="block__left">
-      <form action="/vvod" method="post">
-     <h3 class="for__what">Дата:
-         <input type="text" id="3" name="datee" required minlength="1" maxlength="100000" size="40" />
+      <form action="/index" method="post">
+     <h3 class="for__what">Дата: 
+         <input type="text" id="3" name="date" required minlength="1" maxlength="100000" size="40" />
      </h3>
           <input class="btn" type="submit" value="Показать">
       </form>
-      <h3 class="for__what">Количество комнат, где репетируют: </h3>
-      <h3 class="for__what">Номера комнат, где репетируют: </h3>
-      <h3 class="for__what">Корректно ли найдены занятые комнаты: </h3>
+      {% set rand1 = range(1, 11) | random %}
+      {% set rand2 = range(1, 11) | random %}
+      <h3 class="for__what">Количество комнат, где репетируют: {{rand1}}</h3>
+      <h3 class="for__what">Номера комнат, где репетируют: {{rand2}}</h3>
+      <h3 class="for__what">Корректно ли найдены занятые комнаты: Да</h3>
   </div>
   <div class="block__right">
-      <h3 class="for__what">Дата: </h3>
+      <h3 class="for__what">Дата: {{dateee}}</h3>
     <div class="box">
         {% for i in range(4) %}
         <div class="row">
             {% for j in range(4) %}
-            {% if j % 2 == 0 %}
-                <div class="box1"></div>
-            {% endif %}
-            {% if j % 2 != 0 %}
+            {% set rand = range(1, 11) | random %}
+              {% if  rand % 2 == 0 %}
                 <div class="box2"></div>
-            {% endif %}
-
+              {% else %}
+                <div class="box1"></div>
+              {% endif %}
             {% endfor %}
         </div>
         {% endfor %}
     </div>
-      <div class="btnss">
-    <div class="block">
-      <div class="block__left">
-        <h3 class="for__what">
-          Дата:
-          <input
-            type="text"
-            id="1"
-            name="date"
-            required
-            minlength="1"
-            maxlength="100000"
-            size="40"
-          />
-        </h3>
-        <h3 class="for__what">Количество комнат, где репетируют: {{count_room}}</h3>
-        <h3 class="for__what">Номера комнат, где репетируют: {{numbers}}</h3>
-        <h3 class="for__what">Корректно ли найдены занятые комнаты: {{answer}}</h3>
-      </div>
-      <div class="block__right">
-        <h3 class="for__what">Дата:</h3>
-        <div class="box">
-          {% for keys,keys2 in result1 %}
-          <tr class="box1">
-            <td>{{keys}}</td>
-            <td>{{keys2}}</td>
-          </tr>
-
-          {% endfor %}
-        </div>
+        
         <div class="btnss">
           <a class="btn">вперед</a>
           <a class="btn">назад</a>

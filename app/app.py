@@ -1,5 +1,6 @@
 import sys
 sys.path.append("../")
+import random
 
 from src.database import *
 
@@ -16,9 +17,9 @@ def index():
     if request.method == 'POST':
         print(getAallData())
         date = request.form['date']
-        datas = getAallData()[int(date)]
-        print(datas)
-        render_template('index.html', answer="Данные получены корректно", numbers=datas[3], count_room=str(datas[1]), newdata=[i[0] for i in datas])
+        # datas = getAallData()[int(date)]
+        # print(datas)
+        render_template('index.html', dateee=date)
     
     return render_template('index.html')
 
@@ -26,19 +27,16 @@ def index():
 def vvod():
     if request.method == 'POST':
         date = request.form['date']
-        number = request.form['number']
-        window = request.form['window']
-        light = request.form['light']
+        # number = request.form['number']
+        # window = request.form['window']
+        # light = request.form['light']
         
-        print(date, number, window, light)
         
-        if date and number and window and light:
-            addDataDate(date, "")
-            addDataFloors(number, "")
-            addDataWindows(window, "")
-            addDataRooms(light, "")
-        else:
-            print("Не довведенны необходимые данные")
+        # if date and number and window and light:
+        addDataDate(date, "")
+        addDataFloors("0", "")
+        addDataWindows("1", "")
+        addDataRooms("2", "")
     return render_template('vvod.html')
 
 @app.route('/list')
