@@ -4,6 +4,16 @@
 # Импорт библиотек и их связь в единую схему
 # 
 
+from database import *
+from logic import *
+
+
+
+createDatabase()
+
+for data in getAllData():
+    
+
 
 # запустить только при исходном файле
 if __name__=="__main__":
