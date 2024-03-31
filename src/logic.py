@@ -14,6 +14,7 @@ HEADER = {"X-Auth-Token": 'ppo_11_11573'}
 
 session = requests.Session()
 
+
 def getData(url: str = "/date") -> dict:
     '''
     Функция парсинга данных. 
@@ -43,19 +44,21 @@ def getAllData():
 
 def postData():
     data = {
-        "data": {
-        "count": 4,
-        "rooms": [
-            3,
-            5,
-            9,
-            10
-        ]
-    },
-        "date": "01-05-21"}
+        "payload": {
+            "data": {
+                "count": 4,
+                "rooms": [
+                    3,
+                    5,
+                    9,
+                    10
+                ]
+            },
+            "date": "01-05-21"}
+    }
     HEADER = {"X-Auth-Token": 'ppo_11_11573'}
     p = session.post(URL, params=data, headers=HEADER)
-    print(p.text)
+    return True
 
 
 # запуск тестирующих модулей по отдельности
