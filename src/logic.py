@@ -5,6 +5,22 @@
 # 
 
 
+import requests
+import json
+
+
+def getData(url:str) -> dict:
+    '''
+    Функция парсинга данных. 
+    
+    Функция принимает в себя url страницы для парсинга и возвращает словарь данных.
+    
+    '''
+    
+    text = requests.get(url)
+    
+    return json.loads(text)
+
 
 # запуск тестирующих модулей по отдельности
 if __name__=="__main__":

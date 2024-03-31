@@ -39,6 +39,9 @@ def createDatabase() -> None:
     db.close()
 
 
+
+
+
 # запуск тестирующей части (при неоходимости)
 if __name__ == "__main__":
     createDatabase()
