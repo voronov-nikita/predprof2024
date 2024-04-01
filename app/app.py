@@ -1,15 +1,15 @@
 import sys
 sys.path.append("../")
-import random
 
+from flask import Flask, render_template, request
 from src.database import *
 
-from flask import Flask, render_template,request
 
 app = Flask(__name__)
 
 
 createDatabase()
+
 
 @app.route('/')
 @app.route('/index', methods=['GET', 'POST'])
@@ -20,8 +20,9 @@ def index():
         # datas = getAallData()[int(date)]
         # print(datas)
         render_template('index.html', dateee=date)
-    
+
     return render_template('index.html')
+
 
 @app.route('/vvod', methods=['GET', 'POST'])
 def vvod():
@@ -30,14 +31,14 @@ def vvod():
         # number = request.form['number']
         # window = request.form['window']
         # light = request.form['light']
-        
-        
+
         # if date and number and window and light:
         addDataDate(date, "")
         addDataFloors("0", "")
         addDataWindows("1", "")
         addDataRooms("2", "")
     return render_template('vvod.html')
+
 
 @app.route('/list')
 def list():
